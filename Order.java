@@ -2,25 +2,23 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
+
 public class Order {
     int orderId;
-    int customerRefrence;
+    int customerReference;
     LinkedList <Integer> products = new LinkedList <Integer> ();  
-    double total_price;
+    double totalPrice;
     LocalDate date;
-    String status; // (pending, shipped, delivered, canceled)
+    String status;
 
-    public Order() {
-        this.orderId = 0;
-        this.customerRefrence = 0;
-        this.total_price = 0;
-        this.status = "";
-    }
+   public Order() {
+    this(0, 0, new Integer[0], 0.0, LocalDate.now().toString(), "");
+   }
 
-    public Order(int orderId, int customerRefrence, Integer [] pids, double total_price, String date, String status) {
+    public Order(int orderId, int customerReference, Integer [] productIDs, double totalPrice, String date, String status) {
         this.orderId = orderId;
-        this.customerRefrence = customerRefrence;
-        this.total_price = total_price;
+        this.customerReference = customerReference;
+        this.totalPrice = totalPrice;
         //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         this.date = LocalDate.parse(date);//, formatter);
         this.status = status;
@@ -33,16 +31,16 @@ public class Order {
         return orderId;
     }
 
-    public int getCustomerRefrence() {
-        return customerRefrence;
+    public int getCustomerReference() {
+        return customerReference;
     }
 
     public LinkedList<Integer> getProducts() {
         return products;
     }
 
-    public double getTotal_price() {
-        return total_price;
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
     public LocalDate getDate() {
@@ -57,16 +55,16 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public void setCustomerRefrence(int customerRefrence) {
-        this.customerRefrence = customerRefrence;
+    public void setCustomerReference(int customerReference) {
+        this.customerReference = customerReference;
     }
 
-    public void setProducts(int pid) {
-        this.products.insert(pid);
+    public void setProducts(int productIDs) {
+        this.products.insert(productIDs);
     }
 
-    public void setTotal_price(double total_price) {
-        this.total_price = total_price;
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public void setDate(LocalDate date) {
@@ -82,14 +80,14 @@ public class Order {
         products.insert(product);
     }
 
-    public boolean removeReview( Integer P)
+    public boolean removeReview( Integer rev)
     {
         if ( ! products.empty())
         {
             products.findFirst();
             while(products.last())
             {
-                if (products.retrieve() == P)
+                if (products.retrieve() == rev)
                 {
                     products.remove();
                     return true;
@@ -108,8 +106,9 @@ public class Order {
    
     @Override
     public String toString() {
-        String str =  "\nOrder{" + "orderId=" + orderId + ", customer Refrence=" + customerRefrence 
-                + ",total price=" + total_price 
+        retrurn {" + "orderId=" + orderId +
+            ", customer Reference=" + customerReference 
+                + ",total price=" + totalPrice 
                 + " , status =" + status
                 + ", date =" + date;
         if ( ! products.empty())
