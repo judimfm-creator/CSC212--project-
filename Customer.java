@@ -51,14 +51,14 @@ public class Customer {
     }
     
     
-      public boolean removeOrder( Integer R)
+      public boolean removeOrder( Integer remove)
     {
         if ( ! orders.empty())
         {
             orders.findFirst();
             while(orders.last())
             {
-                if (orders.retrieve() == R)
+                if (orders.retrieve() == remove)
                 {
                     orders.remove();
                     return true;
@@ -78,7 +78,9 @@ public class Customer {
     
     @Override
     public String toString() {
-        String str =  "\nCustomers{" + "customerId=" + customerId + ", name=" + name + ", email=" + email ;
+        return "customerId=" + customerId + 
+            ", name=" + name +
+            ", email=" + email ;
         if ( ! orders.empty())
         {
             str += "(orders List" ;
