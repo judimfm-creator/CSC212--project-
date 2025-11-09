@@ -1,23 +1,16 @@
 import java.io.File;
 import java.util.Scanner;
 
-/**
- *
- * @author Manal Alhihi
- * 
- */
 public class customersData {
     
     public static Scanner input = new Scanner (System.in);
     public static LinkedList<Customer> customers = new LinkedList<Customer> ();
    
- //==============================================================
     public LinkedList<Customer> getcustomersData ( )
     {
         return customers;
     }
 
-//==============================================================
     public customersData(String fileName)
     {
             try{
@@ -39,7 +32,6 @@ public class customersData {
             }
     }
   
-//==============================================================
 public void RegisterCustomer()
 {
     Customer customer = new Customer ();
@@ -49,7 +41,7 @@ public void RegisterCustomer()
     
     while (checkCustomerID(customer.getCustomerId()))
     {
-        System.out.println("Re-Enter agian, ID already avialable: ");
+        System.out.println("Please try agian, ID is already available: ");
         customer.setCustomerId(input.nextInt());
     }    
     
@@ -64,12 +56,11 @@ public void RegisterCustomer()
     customers.insert(customer);
 }
     
-//==============================================================
 public void OrderHistory()
 {
         if (customers.empty())
         {
-            System.out.println("empty Customers data");
+            System.out.println("empty customer data");
         }
         else
         {
@@ -93,7 +84,7 @@ public void OrderHistory()
             {
                 LinkedList<Integer> orders = customers.retrieve().getOrders();
                 if (orders.empty())
-                    System.out.println("No Order History for " + customers.retrieve().getCustomerId());
+                    System.out.println("Couldn't find order history " + customers.retrieve().getCustomerId());
                 else
                 {
                     System.out.println("Order History");
@@ -106,12 +97,11 @@ public void OrderHistory()
                  }
             }
             else
-                System.out.println("No such customer ID");
+                System.out.println("Couldn't find customer ID");
         }
         
     }
     
-//==============================================================
     public boolean checkCustomerID( int customerID )
     {
         boolean found = false;
@@ -130,12 +120,11 @@ public void OrderHistory()
         return found ;
     }
         
-//==============================================================
     public Customer getCustomerID()
     {
         if (customers.empty())
         {
-            System.out.println("empty Customers data");
+            System.out.println("Empty customers data");
         }
         else
         {
@@ -160,7 +149,7 @@ public void OrderHistory()
             if (found )
                 return customers.retrieve();
         }
-        System.out.println("No such customer ID");
+        System.out.println("Couldn't find customer ID");
         return null;
     }
 }
