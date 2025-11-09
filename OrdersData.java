@@ -9,13 +9,11 @@ public class ordersData {
     public static Scanner input = new Scanner (System.in);
     public static LinkedList<Order> orders = new LinkedList<Order> ();
     
-//==============================================================
     public LinkedList<Order>  getordersData ( )
     {
         return orders;
     }
     
-//==============================================================
     public ordersData ( String fileName)
     {
         try{
@@ -50,7 +48,6 @@ public class ordersData {
             }
      }
 
-    //==============================================================
     public int cancelOrder (int oid)
     {
         orders.findFirst();
@@ -75,7 +72,6 @@ public class ordersData {
         return 0; // not found order
     }
     
-    //==============================================================
     public boolean UpdateOrder( int orderID)
     {
          boolean found = false;
@@ -117,7 +113,6 @@ public class ordersData {
         return false;
     }
     
-    //==================================================================    
     public Order searchOrderID(int orderID)
     {
         boolean found = false;
@@ -142,12 +137,10 @@ public class ordersData {
         return null;
     }
 
-    //==================================================================    
    public LinkedList<Order> BetweenTwoDates(String date1, String date2)
 {
     LinkedList<Order> ordersbetweenDates = new LinkedList<Order>();
 
-    // The input dates come as Strings (like "02/03/2025")
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     LocalDate Ldate1 = LocalDate.parse(date1, formatter);
     LocalDate Ldate2 = LocalDate.parse(date2, formatter);
@@ -160,7 +153,6 @@ public class ordersData {
         {
             LocalDate orderDate = orders.retrieve().getDate();
 
-            // Include both start and end dates
             if (!orderDate.isBefore(Ldate1) && !orderDate.isAfter(Ldate2))
             {
                 ordersbetweenDates.insert(orders.retrieve());
@@ -180,7 +172,7 @@ public class ordersData {
 }
 
         
-    //==================================================================    
+        
     public boolean checkOrderID(int oid)
     {
         if (!orders.empty())
