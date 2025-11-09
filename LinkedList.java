@@ -11,7 +11,6 @@ public class LinkedList<T>{
                 data = val;
                 next = null;
             }
-            // Setters/Getters...
 
             public T getData() {
                 return data;
@@ -31,7 +30,6 @@ public class LinkedList<T>{
 
         }
     
-    // class Linked List
     private Node<T> head;
     private Node<T> current;
     int size;
@@ -70,11 +68,9 @@ public class LinkedList<T>{
    public void insert(T val) {
     Node<T> newNode = new Node<T>(val);
 
-    // Case 1: list is empty
     if (empty()) {
         head = current = newNode;
     } 
-    // Case 2: list not empty, but current is null (happens after remove or at start)
     else if (current == null) {
         Node<T> temp = head;
         while (temp.next != null)
@@ -82,7 +78,6 @@ public class LinkedList<T>{
         temp.next = newNode;
         current = newNode;
     } 
-    // Case 3: normal insert after current
     else {
         newNode.next = current.next;
         current.next = newNode;
